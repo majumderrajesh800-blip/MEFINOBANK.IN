@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <title>ফিনো লোন পাসবুক - ফোল্ডিং ডিজাইন</title>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0; 
+            background: #f0f0f0; 
+            display: flex; 
+            justify-content: center;
+        }
+
+        /* এ-ফোর সাইজের পেজ কিন্তু উচ্চতা আপনার মাপ অনুযায়ী কম */
+        .a4-container {
+            background: white;
+            width: 11.69in; /* A4 Landscape width */
+            height: 6.5in;  /* আপনার ৮ আঙুল লম্বার মাপ অনুযায়ী কমানো হয়েছে */
+            margin-top: 50px;
+            display: flex;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        /* মাঝখানের ভাঁজ করার দাগ */
+        .center-fold {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            border-left: 1px dashed #000;
+            z-index: 5;
+        }
+
+        .side-page {
+            width: 50%;
+            padding: 15px;
+            box-sizing: border-box;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* আড়াআড়ি ফিনো লেখা জলছাপ */
+        .watermark {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%) rotate(-35deg);
+            font-size: 22px;
+            color: rgba(0, 0, 0, 0.05);
+            font-weight: bold;
+            white-space: nowrap;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .header { text-align: center; margin-bottom: 10px; z-index: 1; }
+        .header h1 { font-size: 16px; margin: 0; color: #b71c1c; }
+        .header p { font-size: 11px; margin: 2px 0; font-weight: bold; }
+
+        table { width: 100%; border-collapse: collapse; z-index: 1; }
+        
+        /* বাক্সগুলো চৌকো করার জন্য স্টাইল */
+        th, td { 
+            border: 1px solid #000; 
+            text-align: center; 
+            padding: 0;
+            margin: 0;
+        }
+        
+        th { background: #f2f2f2; font-size: 10px; height: 30px; }
+        
+        /* প্রতিটি বক্স চৌকো এবং লেখার জায়গা লম্বাটে */
+        td { 
+            height: 35px; 
+            font-size: 12px;
+        }
+
+        .footer { 
+            margin-top: 15px; 
+            display: flex; 
+            justify-content: space-between; 
+            font-size: 11px;
+            z-index: 1;
+        }
+
+        @media print {
+            body { background: none; }
+            .no-print { display: none; }
+            .a4-container { margin: 0; border: 1px solid #000; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="a4-container">
+    <div class="center-fold"></div>
+
+    <div class="side-page">
+        <div class="watermark">FINO PAYMENTS BANK<br>FINO PAYMENTS BANK</div>
+        <div class="header">
+            <h1>FINO PAYMENTS BANK</h1>
+            <p>ঋণ-গ্রহীতার হাত-খাতা (তহেরপুর)</p>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 20%;">তারিখ</th>
+                    <th style="width: 25%;">ঋণ দেওয়া</th>
+                    <th style="width: 25%;">সুদ</th>
+                    <th style="width: 30%;">পরিশোধ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <script>for(let i=1; i<=12; i++) document.write('<tr><td></td><td></td><td></td><td></td></tr>');</script>
+            </tbody>
+        </table>
+        <div class="footer">
+            <span>সদস্যের স্বাক্ষর</span>
+            <span>অফিসার স্বাক্ষর</span>
+        </div>
+    </div>
+
+    <div class="side-page">
+        <div class="watermark">FINO PAYMENTS BANK<br>FINO PAYMENTS BANK</div>
+        <div class="header">
+            <h1>FINO PAYMENTS BANK</h1>
+            <p>ঋণ-গ্রহীতার হাত-খাতা (তহেরপুর)</p>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 20%;">তারিখ</th>
+                    <th style="width: 25%;">ঋণ দেওয়া</th>
+                    <th style="width: 25%;">সুদ</th>
+                    <th style="width: 30%;">পরিশোধ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <script>for(let i=1; i<=12; i++) document.write('<tr><td></td><td></td><td></td><td></td></tr>');</script>
+            </tbody>
+        </table>
+        <div class="footer">
+            <span>সদস্যের স্বাক্ষর</span>
+            <span>অফিসার স্বাক্ষর</span>
+        </div>
+    </div>
+</div>
+
+<div class="no-print" style="position: fixed; bottom: 10px; right: 10px;">
+    <button onclick="window.print()" style="padding: 10px 20px; background: #b71c1c; color: #fff; border: none; cursor: pointer; border-radius: 5px;">প্রিন্ট করুন</button>
+</div>
+
+</body>
+</html>

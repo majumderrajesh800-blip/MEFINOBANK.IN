@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fino Bank Smart Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* ব্যাকগ্রাউন্ড চেঞ্জ করার জায়গা */
+        body {
+            margin: 0;
+            padding: 0;
+            /* অপশন ১: আধুনিক গ্রাডিয়েন্ট ব্যাকগ্রাউন্ড */
+            background: linear-gradient(135deg, #1e293b 0%, #941c1c 100%);
+            
+            /* অপশন ২: যদি কোনো ছবি দিতে চান তবে নিচের লাইনটির শুরু থেকে /* মুছে দিন */
+            /* background: url('https://images.unsplash.com/photo-1557683316-973673baf926') no-repeat center center fixed; background-size: cover; */
+
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            color: white;
+        }
+
+        /* ফিনো ব্যাংক লোগো স্টাইল */
+        .header-section {
+            margin-top: 50px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .fino-logo {
+            font-size: 38px;
+            font-weight: bold;
+            color: #ffffff;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* ইনপুট প্যানেল */
+        .add-panel {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            padding: 25px;
+            border-radius: 15px;
+            display: flex;
+            gap: 15px;
+            width: 100%;
+            max-width: 700px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        input {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.9);
+            font-size: 15px;
+        }
+
+        .btn-save {
+            background: #ffffff;
+            color: #941c1c;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-save:hover {
+            background: #941c1c;
+            color: white;
+        }
+
+        /* শর্টকাট গ্রিড */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 25px;
+            width: 90%;
+            max-width: 1000px;
+            padding-bottom: 50px;
+        }
+
+        .link-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .link-card:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px);
+            border-color: #fff;
+        }
+
+        .link-card img {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            background: white;
+            padding: 5px;
+        }
+
+        .link-card span {
+            display: block;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            color: #ff4d4d;
+            cursor: pointer;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .link-card:hover .delete-btn { opacity: 1; }
+    </style>
+</head>
+<body>
+
+    <div class="header-section">
+        <div class="fino-logo">Fino Payments Bank</div>
+        <p style="margin: 5px 0 0; font-size: 14px; opacity: 0.8;">তাহেরপুর ডিজিটাল সার্ভিস পোর্টাল</p>
+    </div>
+
+    <div class="add-panel">
+        <input type="text" id="siteName" placeholder="সাইটের নাম">
+        <input type="url" id="siteUrl" placeholder="URL লিঙ্ক (https://...)">
+        <button class="btn-save" onclick="saveLink()">সেভ করুন</button>
+    </div>
+
+    <div class="grid-container" id="linkGrid"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', loadLinks);
+
+        function saveLink() {
+            const name = document.getElementById('siteName').value;
+            let url = document.getElementById('siteUrl').value;
+            if (!name || !url) return alert("দয়া করে নাম এবং লিঙ্ক দিন!");
+            if (!url.startsWith('http')) url = 'https://' + url;
+
+            const links = JSON.parse(localStorage.getItem('finoLinks_v2') || '[]');
+            links.push({ name, url });
+            localStorage.setItem('finoLinks_v2', JSON.stringify(links));
+
+            document.getElementById('siteName').value = '';
+            document.getElementById('siteUrl').value = '';
+            loadLinks();
+        }
+
+        function loadLinks() {
+            const grid = document.getElementById('linkGrid');
+            const links = JSON.parse(localStorage.getItem('finoLinks_v2') || '[]');
+            grid.innerHTML = links.map((link, index) => `
+                <div class="link-card">
+                    <i class="fas fa-times-circle delete-btn" onclick="deleteLink(${index})"></i>
+                    <a href="${link.url}" target="_blank" style="text-decoration:none;">
+                        <img src="https://www.google.com/s2/favicons?sz=128&domain=${link.url}">
+                        <span>${link.name}</span>
+                    </a>
+                </div>
+            `).join('');
+        }
+
+        function deleteLink(index) {
+            let links = JSON.parse(localStorage.getItem('finoLinks_v2'));
+            links.splice(index, 1);
+            localStorage.setItem('finoLinks_v2', JSON.stringify(links));
+            loadLinks();
+        }
+    </script>
+</body>
+</html>

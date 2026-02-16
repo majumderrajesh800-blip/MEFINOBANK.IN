@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajesh Digital 24 | All-in-One Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --main: #1e3a8a; --accent: #d9411e; --bg: #f0f2f5; }
+        body { margin: 0; font-family: 'Hind Siliguri', sans-serif; background: var(--bg); height: 100vh; overflow: hidden; }
+        #auth-section { display: flex; justify-content: center; align-items: center; height: 100vh; background: #0f172a; position: fixed; width: 100%; z-index: 9999; top:0; left:0; }
+        .login-card { background: white; padding: 40px; border-radius: 20px; width: 340px; text-align: center; border-top: 10px solid var(--accent); }
+        .inp { width: 100%; padding: 12px; margin: 10px 0; border: 2px solid #eee; border-radius: 10px; box-sizing: border-box; }
+        .btn-log { width: 100%; padding: 12px; background: var(--main); color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; }
+        #main-dashboard { display: none; height: 100vh; flex-direction: column; }
+        header { background: white; padding: 10px 25px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--accent); z-index: 100; }
+        .wrapper { display: flex; flex: 1; overflow: hidden; }
+        .sidebar { width: 280px; background: white; padding: 15px; box-shadow: 2px 0 15px rgba(0,0,0,0.05); overflow-y: auto; flex-shrink: 0; border-right: 1px solid #ddd; }
+        .nav-link { padding: 12px 15px; margin-bottom: 8px; border-radius: 12px; cursor: pointer; font-weight: 600; color: #334155; transition: 0.3s; display: flex; align-items: center; gap: 12px; text-decoration: none; background: #f8fafc; }
+        .nav-link:hover { background: #e2e8f0; color: var(--main); }
+        .nav-link.active { background: var(--main); color: white; }
+        .main-content { flex: 1; overflow-y: auto; padding: 20px; box-sizing: border-box; background: white; margin: 10px; border-radius: 15px; }
+        #app-frame { width: 100%; height: 100%; border: none; display: none; }
+        .doc-guide { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; margin-top: 15px; }
+        .doc-box { background: #fff; border-radius: 12px; padding: 15px; border-left: 6px solid var(--accent); border: 1px solid #eee; border-left-width: 6px; }
+        .mega-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-top: 10px; }
+        .s-card { background: #f8fafc; padding: 15px 5px; text-align: center; border-radius: 12px; border: 1px solid #e2e8f0; text-decoration: none; color: #333; font-weight: bold; font-size: 11px; transition: 0.3s; }
+        .s-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+        .s-card span { display: block; font-size: 24px; margin-bottom: 8px; }
+        .cat-title { background: #334155; color: white; padding: 8px 12px; border-radius: 5px; margin: 20px 0 10px; font-size: 14px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div id="auth-section">
+        <div class="login-card">
+            <h1 style="color:var(--main); margin:0;">রাজেশ ডিজিটাল ২৪</h1>
+            <p>তাহেরপুর (Birnagar) অ্যাডমিন পোর্টাল</p>
+            <input type="text" id="user" class="inp" placeholder="ইউজার আইডি (ME)">
+            <input type="password" id="pass" class="inp" placeholder="পাসওয়ার্ড (ME)">
+            <button class="btn-log" onclick="doLogin()">প্রবেশ করুন</button>
+        </div>
+    </div>
+
+    <div id="main-dashboard">
+        <header>
+            <div style="display:flex; align-items:center; gap:12px;">
+                <div style="background:var(--accent); color:white; padding:10px 15px; border-radius:12px; font-weight:bold;">R</div>
+                <b>রাজেশ মজুমদার ডিজিটাল ২৪ | তাহেরপুর</b>
+            </div>
+            <div id="live-clock" style="font-weight: bold; color: var(--main);"></div>
+        </header>
+
+        <div style="background: #fff8f6; border-bottom: 1px solid #ddd; padding: 5px 0; overflow: hidden;">
+            <div style="display: flex; align-items: center;">
+                <span style="background: var(--accent); color: white; padding: 2px 10px; font-weight: bold; font-size: 14px; z-index: 10; white-space: nowrap;">📢 আপডেট:</span>
+                <marquee behavior="scroll" direction="left" scrollamount="6" style="font-weight: 600; color: #d9411e; font-size: 14px;">
+                     রাজেশ ভাই, ১০০+ সার্ভিস এখন লাইভ... ⚡ আধার, ভোটার ও প্যান কার্ডের সব কাজ এক জায়গায়... ⚡ লোন আবেদনের ফাইলগুলো ড্যাশবোর্ড থেকে খুলুন... ⚡ ধন্যবাদ!
+                </marquee>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            <aside class="sidebar">
+                <div id="h-link" class="nav-link active" onclick="showHome()">🏠 হোমপেজ (গাইডলাইন)</div>
+                <div id="s-link" class="nav-link" onclick="showServices()">🔗 সব সার্ভিস (১০০+)</div>
+                <div class="nav-link" onclick="loadPage('form.html', this)">📄 লোন আবেদন ফর্ম</div>
+                <div class="nav-link" onclick="loadPage('khata.html', this)">📒 ঋণ গ্রহীতার খাতা</div>
+                <div class="nav-link" onclick="loadPage('passbook.html', this)">📖 পাসবুক ভিউ</div>
+                <div class="nav-link" onclick="loadPage('cash-khata.html', this)">📊 ক্যাশ এন্ট্রি ও খাতা</div>
+                <div class="nav-link" style="margin-top:50px; background: #fee2e2; color: #b91c1c;" onclick="doLogout()">🔒 লগআউট</div>
+            </aside>
+
+            <main class="main-content">
+                <div id="view-home">
+                    <h2 style="color:var(--main); margin-top:0;">📑 প্রয়োজনীয় ডকুমেন্টস গাইডলাইন</h2>
+                    <div class="doc-guide">
+                        <div class="doc-box"><h4>💳 প্যান কার্ড</h4><ul><li>আধার (মোবাইল লিঙ্ক)</li><li>২ কপি ফটো</li><li>সঠিক জন্ম তারিখ</li></ul></div>
+                        <div class="doc-box"><h4>🆔 আধার সংশোধন</h4><ul><li>বার্থ সার্টিফিকেট/ভোটার</li><li>প্রধানের সার্টিফিকেট</li><li>আগের আধার কপি</li></ul></div>
+                        <div class="doc-box"><h4>🗳️ নতুন ভোটার</h4><ul><li>আধার কার্ড ও ফটো</li><li>বাবা/মায়ের ভোটার নম্বর</li><li>বয়সের প্রমাণপত্র</li></ul></div>
+                        <div class="doc-box"><h4>📜 কাস্ট সার্টিফিকেট</h4><ul><li>বংশতালিকা</li><li>রক্তের সম্পর্কের কারো কার্ড</li><li>জমির পর্চা/দলিল</li></ul></div>
+                    </div>
+                </div>
+
+                <div id="view-services" style="display:none;">
+                    <h2 style="color:var(--main); margin-top:0;">🌐 ডিজিটাল সার্ভিস পোর্টাল (All Links)</h2>
+                    
+                    <div class="cat-title">📍 পশ্চিমবঙ্গ সরকারি পোর্টাল</div>
+                    <div class="mega-grid">
+                        <a href="https://banglarbhumi.gov.in" target="_blank" class="s-card"><span>🗺️</span>বাংলার ভূমি</a>
+                        <a href="https://swasthyasathi.gov.in" target="_blank" class="s-card"><span>🏥</span>স্বাস্থ্য সাথী</a>
+                        <a href="https://food.wb.gov.in" target="_blank" class="s-card"><span>🌾</span>রেশন কার্ড</a>
+                        <a href="https://edistrict.wb.gov.in" target="_blank" class="s-card"><span>🏛️</span>ই-ডিস্ট্রিক্ট</a>
+                        <a href="https://bsk.wb.gov.in" target="_blank" class="s-card"><span>🏢</span>BSK পোর্টাল</a>
+                        <a href="https://wbsedcl.in" target="_blank" class="s-card"><span>💡</span>বিদ্যুৎ বিল</a>
+                        <a href="https://scstbcw.wb.gov.in" target="_blank" class="s-card"><span>📜</span>SC/ST/OBC</a>
+                        <a href="https://wb.gov.in" target="_blank" class="s-card"><span>🏛️</span>WB মেইন পোর্টাল</a>
+                        <a href="https://socialsecuritywb.gov.in" target="_blank" class="s-card"><span>👵</span>সামাজিক সুরক্ষা</a>
+                        <a href="https://shilpasathi.wb.gov.in" target="_blank" class="s-card"><span>🏗️</span>শিল্প সাথী</a>
+                        <a href="https://pmkisan.gov.in/RegistrationFormupdated.aspx" target="_blank" class="s-card"><span>🏗️</span>PM Kisan Samman Nidhi</a>
+                    </div>
+
+                    <div class="cat-title">🇮🇳 ভারত সরকারি পোর্টাল (Digital India)</div>
+                    <div class="mega-grid">
+                        <a href="https://myaadhaar.uidai.gov.in" target="_blank" class="s-card"><span>🆔</span>আধার কার্ড</a>
+                        <a href="https://voters.eci.gov.in" target="_blank" class="s-card"><span>🗳️</span>ভোটার পোর্টাল</a>
+                        <a href="https://www.pan.utiitsl.com" target="_blank" class="s-card"><span>💳</span>UTI প্যান</a>
+                        <a href="https://onlineservices.nsdl.com" target="_blank" class="s-card"><span>💳</span>NSDL প্যান</a>
+                        <a href="https://pmkisan.gov.in" target="_blank" class="s-card"><span>👨‍🌾</span>PM কিষাণ</a>
+                        <a href="https://passportindia.gov.in" target="_blank" class="s-card"><span>🛂</span>পাসপোর্ট</a>
+                        <a href="https://parivahan.gov.in" target="_blank" class="s-card"><span>🚗</span>ড্রাইভিং লাইসেন্স</a>
+                        <a href="https://eshram.gov.in" target="_blank" class="s-card"><span>👷</span>ই-শ্রম কার্ড</a>
+                        <a href="https://digilocker.gov.in" target="_blank" class="s-card"><span>📂</span>ডিজিলকার</a>
+                        <a href="https://incometax.gov.in" target="_blank" class="s-card"><span>🧾</span>ইনকাম ট্যাক্স</a>
+                        <a href="https://epfindia.gov.in" target="_blank" class="s-card"><span>💰</span>PF পোর্টাল</a>
+                    </div>
+
+                    <div class="cat-title">🏦 ব্যাংকিং ও রিচার্জ</div>
+                    <div class="mega-grid">
+                        <a href="https://partner.finobank.com" target="_blank" class="s-card"><span>🏦</span>Fino Partner</a>
+                        <a href="https://onlinesbi.sbi" target="_blank" class="s-card"><span>🏦</span>SBI অনলাইন</a>
+                        <a href="https://www.pnbindia.in" target="_blank" class="s-card"><span>🏦</span>PNB নেট</a>
+                        <a href="https://www.cibil.com" target="_blank" class="s-card"><span>📈</span>CIBIL চেক</a>
+                        <a href="https://www.licindia.in" target="_blank" class="s-card"><span>🛡️</span>LIC পোর্টাল</a>
+                        <a href="https://www.airtel.in/bank" target="_blank" class="s-card"><span>📱</span>Airtel Bank</a>
+                    </div>
+
+                    <div class="cat-title">🎓 স্কলারশিপ ও স্টুডেন্ট পোর্টাল</div>
+                    <div class="mega-grid">
+                        <a href="https://wbmdfcscholarship.org" target="_blank" class="s-card"><span>🎓</span>ঐক্যশ্রী</a>
+                        <a href="https://svmcm.wbhed.gov.in" target="_blank" class="s-card"><span>📚</span>বিবেকানন্দ</a>
+                        <a href="https://oasis.gov.in" target="_blank" class="s-card"><span>📖</span>Oasis</a>
+                        <a href="https://scholarships.gov.in" target="_blank" class="s-card"><span>🇮🇳</span>NSP পোর্টাল</a>
+                    </div>
+                </div>
+
+                <iframe id="app-frame"></iframe>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            if(localStorage.getItem('rajesh_verified') === 'true') {
+                document.getElementById('auth-section').style.display = 'none';
+                document.getElementById('main-dashboard').style.display = 'flex';
+                showHome();
+            }
+            setInterval(() => {
+                document.getElementById('live-clock').innerText = new Date().toLocaleString('bn-BD');
+            }, 1000);
+        };
+
+        function doLogin() {
+            var u = document.getElementById('user').value;
+            var p = document.getElementById('pass').value;
+            if(u === 'admin' && p === 'admin') {
+                localStorage.setItem('rajesh_verified', 'true');
+                location.reload();
+            } else { alert("ভুল আইডি বা পাসওয়ার্ড!"); }
+        }
+
+        function doLogout() {
+            localStorage.removeItem('rajesh_verified');
+            location.reload();
+        }
+
+        function showHome() {
+            document.getElementById('view-home').style.display = 'block';
+            document.getElementById('view-services').style.display = 'none';
+            document.getElementById('app-frame').style.display = 'none';
+            setActive(document.getElementById('h-link'));
+        }
+
+        function showServices() {
+            document.getElementById('view-home').style.display = 'none';
+            document.getElementById('view-services').style.display = 'block';
+            document.getElementById('app-frame').style.display = 'none';
+            setActive(document.getElementById('s-link'));
+        }
+
+        function loadPage(url, el) {
+            document.getElementById('view-home').style.display = 'none';
+            document.getElementById('view-services').style.display = 'none';
+            var f = document.getElementById('app-frame');
+            f.style.display = 'block';
+            f.src = url;
+            setActive(el);
+        }
+
+        function setActive(el) {
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            el.classList.add('active');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Passbook - Fino Bank</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .passbook-card {
+            width: 800px;
+            background: white;
+            display: flex;
+            border: 2px solid #000;
+            min-height: 500px;
+            position: relative;
+        }
+        /* বাম দিকের সেকশন */
+        .left-side {
+            width: 50%;
+            padding: 40px 20px;
+            border-right: 2px dashed #000;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* ডান দিকের সেকশন */
+        .right-side {
+            width: 50%;
+            padding: 20px 30px;
+            background-color: #fff;
+        }
+        .bank-title {
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        .contact-info {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .admin-box {
+            border: 1px solid #000;
+            padding: 10px;
+            width: 90%;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+        .payment-info {
+            text-align: left;
+            width: 100%;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        .payment-info span {
+            border-bottom: 1px solid #000;
+            display: inline-block;
+            font-weight: bold;
+        }
+        /* ইনপুট ফিল্ড স্টাইল */
+        .input-group {
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .input-group input {
+            border: none;
+            border-bottom: 1px dashed #333;
+            width: 60%;
+            font-size: 16px;
+            outline: none;
+            background: transparent;
+        }
+        .fino-header {
+            text-align: right;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+        .star-logo {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: #d32f2f;
+            font-size: 40px;
+        }
+        @media print {
+            .print-btn { display: none; }
+            body { background: white; padding: 0; }
+            .passbook-card { border: 1px solid #000; }
+        }
+        .print-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">প্রিন্ট করুন</button>
+
+<div class="passbook-card">
+    <div class="left-side">
+        <div class="bank-title">LOAN BY-FINO BANK</div>
+        <div class="contact-info">LOAN CALL- 9332749691</div>
+        <div style="font-size: 18px; margin-bottom: 15px;">BC 172501902</div>
+        
+        <div class="admin-box">
+            RAJESH MAJUMDER<br>
+            ANINDETAMAJUMDER@GMAIL.COM
+        </div>
+
+        <div class="payment-info">
+            <div style="text-align:center; font-weight:bold; text-decoration: underline; margin-bottom:10px;">BANK</div>
+            <strong>PNB-0222010282390</strong><br>
+            <strong>UPI-9332749691@UPI</strong><br>
+            <strong>UPI-8389809985@UPI</strong><br>
+            <strong>CALL-9332749691/8389809985</strong>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <div class="fino-header">FINO PAYMENT BANK</div>
+        <div class="admin-box">
+        <div class="input-group">নাম :- <input type="text"></div>
+        <div class="input-group">ঠিকানা :- <input type="text"></div>
+        <div class="input-group">ব্যাংক নাম :- <input type="text"></div>
+        <div class="input-group">ব্যাংক অ্যাকাউন্ট নম্বর :- <input type="text"></div>
+        <div class="input-group">আধার নাম্বার :- <input type="text"></div>
+        
+        <br><br>
+        
+        <div class="input-group">লোন টাকা :- <input type="text" placeholder="৳"></div>
+        <div class="input-group">লোন টাইম  :- দিন /  সপ্তা  / মাস</div>
+        <div class="input-group">লোন তারিখ :- <input type="date"></div>
+
+        <div class="star-logo">★</div>
+    </div>
+</div>
+
+</body>
+
+</html>

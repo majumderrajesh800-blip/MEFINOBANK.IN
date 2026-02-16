@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <title>FINO Editible Form</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #f4f4f4; padding: 20px; }
+        .container { background: white; max-width: 850px; margin: auto; padding: 30px; border: 2px solid #004a99; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        .header { text-align: center; border-bottom: 2px solid #e81e25; padding-bottom: 10px; }
+        .section-title { background: #004a99; color: white; padding: 8px; margin-top: 20px; font-weight: bold; }
+        
+        /* এডিটেবল বক্সের ডিজাইন */
+        input[type="text"], input[type="number"], input[type="date"], select {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background-color: #fffdf2; /* হালকা হলুদ যাতে বোঝা যায় এখানে লেখা যাবে */
+        }
+        
+        .row { display: flex; gap: 20px; margin-bottom: 10px; }
+        .col { flex: 1; }
+        
+        /* এক্সেল টেবিল স্টাইল */
+        .excel-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .excel-table th, .excel-table td { border: 1px solid #999; padding: 5px; }
+        .excel-table th { background: #eee; font-size: 14px; }
+        
+        .footer-office { background: #f9f9f9; border: 1px dashed #666; padding: 15px; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>ফিনো পেমেন্টস ব্যাঙ্ক (Fino Payments Bank Ltd.)</h1>
+        [span_7](start_span)<p>শাখা: <strong>TAHERPUR (BC-172501902)</strong>[span_7](end_span)</p>
+    </div>
+
+    <div class="section-title">আবেদনকারীর ব্যক্তিগত তথ্য</div>
+    <div class="row">
+        <div class="col">
+            [span_8](start_span)<label>আবেদনকারীর নাম (Full Name)[span_8](end_span):</label>
+            <input type="text" placeholder="এখানে আপনার নাম লিখুন">
+        </div>
+        <div class="col">
+            [span_9](start_span)<label>পিতার/স্বামীর নাম[span_9](end_span):</label>
+            <input type="text" placeholder="এখানে নাম লিখুন">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            [span_10](start_span)<label>জন্ম তারিখ[span_10](end_span):</label>
+            <input type="date">
+        </div>
+        <div class="col">
+            [span_11](start_span)<label>লিঙ্গ[span_11](end_span):</label>
+            <select>
+                <option>পুরুষ (Male)</option>
+                <option>মহিলা (Female)</option>
+                <option>অন্যান্য (Other)</option>
+            </select>
+        </div>
+    </div>
+
+    [span_12](start_span)<div class="section-title">যোগাযোগ ও ঠিকানা[span_12](end_span)</div>
+    [span_13](start_span)<label>স্থায়ী ঠিকানা (Permanent Address)[span_13](end_span):</label>
+    <input type="text" placeholder="সম্পূর্ণ ঠিকানা লিখুন">
+    
+    <div class="row">
+        <div class="col">
+            [span_14](start_span)<label>মোবাইল নম্বর[span_14](end_span):</label>
+            <input type="number" placeholder="913XXXXXXXX">
+            [span_14](start_span)<label>"আধার নম্বর[span_15](end_span):</label>
+            <input type="text" placeholder="0000123400001234">
+        </div>
+        <div class="col">
+            [span_15](start_span)<label>"প্যান  নম্বর[span_15](end_span):</label>
+            <input type="text" placeholder="ABCDE1234F">
+            [span_15](start_span)<label>"ACCOUNTনম্বর[span_15]:</label>
+            <input type="text" placeholder="1234567890147">
+        </div>
+    </div>
+
+    <div class="section-title">📊 এক্সেল ডেটা টেবিল (এখানে টাইপ করুন)</div>
+    <table class="excel-table">
+        <thead>
+            <tr>
+                [span_16](start_span)<th>ব্যাঙ্ক (Bank)[span_16](end_span)</th>
+                [span_17](start_span)<th>নাম (Name)[span_17](end_span)</th>
+                [span_18](start_span)<th>পরিমাণ (Amount)[span_18](end_span)</th>
+                [span_19](start_span)<th>লোন পরিমাণ[span_19](end_span)</th>
+                [span_20](start_span)<th>তারিখ[span_20](end_span)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="text" value="FINO"></td>
+                <td><input type="text"></td>
+                <td><input type="number"></td>
+                <td><input type="number"></td>
+                <td><input type="date"></td>
+            </tr>
+            <tr>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="number"></td>
+                <td><input type="number"></td>
+                <td><input type="date"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    [span_21](start_span)<div class="section-title">ঘোষণা ও স্বাক্ষর[span_21](end_span)</div>
+    [span_22](start_span)<p style="font-size: 13px;">আমি ঘোষণা করছি যে উপরে প্রদত্ত তথ্য সত্য এবং সঠিক[span_22](end_span)। [span_23](start_span)আমি ব্যাঙ্কের নিয়মাবলী মেনে চলতে বাধ্য থাকব[span_23](end_span) ।</p>
+    
+    <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+        [span_24](start_span)<div style="text-align: center; border-top: 1px solid #000; width: 200px; padding-top: 5px;">আবেদনকারীর স্বাক্ষর[span_24](end_span)</div>
+        [span_25](start_span)<div style="text-align: center; border-top: 1px solid #000; width: 200px; padding-top: 5px;">তারিখ[span_25](end_span)</div>
+    </div>
+
+    <div class="footer-office">
+        <strong>👉 অফিস ব্যবহারের জন্য[</strong><br>
+        KYC যাচাই: <input type="checkbox"> হ্যাঁ  (PAN / AADHAR) <input type="checkbox"> না<br>
+                কর্মকর্তার নাম ও স্বাক্ষর:.............................
+                                                             ............................................................
+    </div>
+    </button>
+</div>
+</div>
+
+</body>
+</html>
