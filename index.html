@@ -36,8 +36,8 @@
         <div class="login-card">
             <h1 style="color:var(--main); margin:0;">রাজেশ ডিজিটাল ২৪</h1>
             <p>তাহেরপুর (Birnagar) অ্যাডমিন পোর্টাল</p>
-            <input type="text" id="user" class="inp" placeholder="ইউজার আইডি (admin)">
-            <input type="password" id="pass" class="inp" placeholder="পাসওয়ার্ড (admin)">
+            <input type="text" id="user" class="inp" placeholder="ইউজার আইডি (me)">
+            <input type="password" id="pass" class="inp" placeholder="পাসওয়ার্ড (me)">
             <button class="btn-log" onclick="doLogin()">প্রবেশ করুন</button>
         </div>
     </div>
@@ -64,10 +64,10 @@
             <aside class="sidebar">
                 <div id="h-link" class="nav-link active" onclick="showHome()">🏠 হোমপেজ (গাইডলাইন)</div>
                 <div id="s-link" class="nav-link" onclick="showServices()">🔗 সব সার্ভিস (১০০+)</div>
-                <div class="nav-link" onclick="loadPage('loan-form.html', this)">📄 লোন আবেদন ফর্ম</div>
-                <div class="nav-link" onclick="loadPage('rin-khata.html', this)">📒 ঋণ গ্রহীতার খাতা</div>
+                <div class="nav-link" onclick="loadPage('form.html', this)">📄 লোন আবেদন ফর্ম</div>
+                <div class="nav-link" onclick="loadPage('khata.html', this)">📒 ঋণ গ্রহীতার খাতা</div>
                 <div class="nav-link" onclick="loadPage('passbook.html', this)">📖 পাসবুক ভিউ</div>
-                <div class="nav-link" onclick="loadPage('cash-khata.html', this)">📊 ক্যাশ এন্ট্রি ও খাতা</div>
+                <div class="nav-link" onclick="loadPage('khata.html', this)">📊 ক্যাশ এন্ট্রি ও খাতা</div>
                 <div class="nav-link" style="margin-top:50px; background: #fee2e2; color: #b91c1c;" onclick="doLogout()">🔒 লগআউট</div>
             </aside>
 
@@ -195,3 +195,4 @@
     </script>
 </body>
 </html>
+
